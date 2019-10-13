@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="onShowCountriesClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onSaveProfileClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewModel"
+            type="com.shriom.bikerental.ui.onboard.OnBoardViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            style="@style/cleanNestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                style="@style/cleanNestedScrollViewHolder"
+                android:clipToPadding="false">
+
+                <LinearLayout
+                    android:id="@+id/header"
+                    style="@style/header"
+                    android:layout_width="match_parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        style="@style/headerButton"
+                        android:contentDescription="icon button" />
+
+                    <TextView
+                        style="@style/headerTitle"
+                        android:text="Profile Setup" />
+
+                    <ImageView
+                        style="@style/headerButton"
+                        android:contentDescription="icon button" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingStart="48dp"
+                    android:paddingTop="32dp"
+                    android:paddingEnd="48dp"
+                    android:paddingBottom="32dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/clickableView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="48dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="60dp"
+                        app:cardElevation="0dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:strokeColor="@color/gray300"
+                        app:strokeWidth="0.5dp">
+
+                        <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:adjustViewBounds="true"
+                            android:background="@color/gray100"
+                            android:paddingStart="30dp"
+                            android:paddingTop="30dp"
+                            android:paddingEnd="30dp"
+                            android:paddingBottom="36dp"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@drawable/ic_logo_symbol" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        app:passwordToggleDrawable="@null"
+                        app:errorEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled='@{viewModel.mUser != null}'
+                            android:focusable='@{!viewModel.mProcessing}'
+                            android:focusableInTouchMode='@{!viewModel.mProcessing}'
+                            android:inputType="textPersonName"
+                            app:passwordToggleDrawable="@null"
+                            android:maxLength="56"
+                            android:text='@={viewModel.mUser.firstName}' />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_row_space"
+                        android:hint="Email"
+                        app:passwordToggleDrawable="@null"
+                        app:errorEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled='@{viewModel.mUser != null}'
+                            android:focusable='@{!viewModel.mProcessing}'
+                            app:passwordToggleDrawable="@null"
+                            android:focusableInTouchMode='@{!viewModel.mProcessing}'
+                            android:inputType="textEmailAddress"
+                            android:maxLength="56"
+                            android:text='@={viewModel.mUser.email}' />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/country"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_row_space"
+                        android:hint="Country"
+                        app:errorEnabled="true"
+                        app:passwordToggleDrawable="@null"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/country_input"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:passwordToggleDrawable="@null"
+                            android:enabled='@{viewModel.mUser != null}'
+                            android:focusable="false"
+                            android:onClick='@{!viewModel.mProcessing ? onShowCountriesClick : null}'
+                            android:text='@={viewModel.mUser.country}' />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/referral"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_row_space"
+                        android:hint="Referral Code (Optional)"
+                        app:passwordToggleDrawable="@null"
+                        app:errorEnabled="true"
+                        app:hintAnimationEnabled="true"
+                        app:hintEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled='@{viewModel.mUser != null}'
+                            android:focusable='@{!viewModel.mProcessing}'
+                            android:focusableInTouchMode='@{!viewModel.mProcessing}'
+                            android:fontFamily="@font/din_bold"
+                            android:inputType="text"
+                            app:passwordToggleDrawable="@null"
+                            android:maxLength="10"
+                            android:text='@={viewModel.mReferralCode}' />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:animateLayoutChanges="true"
+                        app:goneUnless='@{viewModel.mUser == null || viewModel.mProcessing}'>
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/Widget.MaterialComponents.Button.Icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="36dp"
+                            android:fontFamily="@font/din_bold"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
+                            android:paddingStart="40dp"
+                            android:paddingTop="18dp"
+                            android:paddingEnd="40dp"
+                            android:paddingBottom="18dp"
+                            android:text="One Moment..."
+                            android:textSize="@dimen/font_caption"
+                            app:backgroundTint="@color/orangeA700"
+                            app:cornerRadius="100dp" />
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:animateLayoutChanges="true"
+                        android:fontFamily="@font/din_bold"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:onClick='@{onSaveProfileClick}'
+                        android:paddingStart="40dp"
+                        android:paddingTop="18dp"
+                        android:paddingEnd="40dp"
+                        android:paddingBottom="18dp"
+                        android:text="LET'S GET CAMPIN'"
+                        android:textSize="@dimen/font_caption"
+                        app:backgroundTint="@color/orangeA700"
+                        app:cornerRadius="100dp"
+                        app:goneUnless='@{viewModel.mUser != null &amp;&amp; !viewModel.mProcessing}' />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,11 +1,52 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/orangeA700</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/pinkA700</item>
+        <item name="android:textSize">@dimen/font_regular_1</item>
+        <item name="android:fontFamily">@font/din_regular</item>
     </style>
+
+
+    <style name="textBottomLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray700</item>
+        <item name="android:textSize">@dimen/font_caption</item>
+        <item name="android:fontFamily">@font/din_light</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="textTopLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray700</item>
+        <item name="android:textSize">@dimen/font_caption</item>
+        <item name="android:fontFamily">@font/din_light</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <style name="textLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray700</item>
+        <item name="android:textSize">@dimen/font_caption</item>
+        <item name="android:fontFamily">@font/din_light</item>
+    </style>
+
+    <style name="textNormal" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray800</item>
+        <item name="android:textSize">@dimen/font_regular_2</item>
+        <item name="android:fontFamily">@font/din_regular</item>
+    </style>
+
+    <style name="textNormalSmall" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray800</item>
+        <item name="android:textSize">@dimen/font_regular_1</item>
+        <item name="android:fontFamily">@font/din_regular</item>
+    </style>
+
+    <style name="textTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray900</item>
+        <item name="android:textSize">@dimen/font_subtitle</item>
+        <item name="android:fontFamily">@font/din_medium</item>
+    </style>
+
 
 </resources>

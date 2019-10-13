@@ -1,0 +1,31 @@
+<resources>
+
+    <!-- typical sizes of views -->
+    <dimen name="border_radius_small">4dp</dimen>
+    <dimen name="border_radius_big">10dp</dimen>
+    <dimen name="border_radius_large">18dp</dimen>
+    <dimen name="tab_host_height">54dp</dimen>
+
+    <!-- font sizes -->
+    <dimen name="font_h1">96dp</dimen>
+    <dimen name="font_h2">60dp</dimen>
+    <dimen name="font_h3">48dp</dimen>
+    <dimen name="font_h4">34dp</dimen>
+    <dimen name="font_h5">24dp</dimen>
+    <dimen name="font_h6">20dp</dimen>
+    <dimen name="font_subtitle">18dp</dimen>
+    <dimen name="font_regular_2">16dp</dimen>
+    <dimen name="font_regular_1">14dp</dimen>
+    <dimen name="font_caption">12dp</dimen>
+    <dimen name="font_small">10dp</dimen>
+    <dimen name="font_mini">8dp</dimen>
+
+    <!-- Standards -->
+    <dimen name="standard_padding">24dp</dimen>
+    <dimen name="standard_row_space">24dp</dimen>
+    <dimen name="standard_section_space">40dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+</resources>

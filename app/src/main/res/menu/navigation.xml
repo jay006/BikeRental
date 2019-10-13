@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_discover"
+        android:icon="@drawable/home_nav_item_selector"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_locations"
+        android:icon="@drawable/explore_nav_item_selector"
+        android:title="Bikes" />
+
+    <!--<item-->
+    <!--android:id="@+id/navigation_refer"-->
+    <!--android:icon="@drawable/local_activity_nav_item_selector"-->
+    <!--android:title="Referral" />-->
+
+    <item
+        android:id="@+id/navigation_trips"
+        android:icon="@drawable/event_note_nav_item_selector"
+        android:title="Bookings" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/face_nav_item_selector"
+        android:title="Profile" />
+
+</menu>

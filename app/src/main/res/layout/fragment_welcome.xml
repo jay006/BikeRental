@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="onLetsGetStartedClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onPrivacyPolicyClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onTermsAndConditionsClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewModel"
+            type="com.shriom.bikerental.ui.onboard.OnBoardViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray60"
+        android:paddingTop="24dp">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/indicators"
+            android:layout_alignParentTop="true"
+            android:overScrollMode="never" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/indicators"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/footer"
+            android:layout_alignParentBottom="false"
+            android:background="@android:color/transparent"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp" />
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingStart="36dp"
+            android:paddingEnd="36dp">
+
+            <TextView
+                style="@style/textLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="Login using your Mobile Number" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/din_bold"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:onClick='@{onLetsGetStartedClick}'
+                android:paddingStart="40dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="40dp"
+                android:paddingBottom="18dp"
+                android:text="Let's Get Started"
+                android:textSize="@dimen/font_caption"
+                app:backgroundTint="@color/orangeA700"
+                app:cornerRadius="100dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/textLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/din_regular"
+                android:gravity="center"
+                android:text="By clicking Lets Get Started, you agree to our"
+                android:textSize="@dimen/font_small" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/textLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/din_medium"
+                    android:gravity="center"
+                    android:onClick='@{onTermsAndConditionsClick}'
+                    android:text="Terms and Conditions"
+                    android:textColor="@color/blueA700"
+                    android:textSize="@dimen/font_small" />
+
+                <TextView
+                    style="@style/textLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/din_medium"
+                    android:gravity="center"
+                    android:text=" and "
+                    android:textSize="@dimen/font_small" />
+
+                <TextView
+                    style="@style/textLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/din_medium"
+                    android:gravity="center"
+                    android:onClick='@{onPrivacyPolicyClick}'
+                    android:text="Privacy Policy"
+                    android:textColor="@color/blueA700"
+                    android:textSize="@dimen/font_small" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical"
+    android:padding="56dp">
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/ic_explore" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/din_black"
+            android:gravity="center"
+            android:text="Discover Bikes"
+            android:textColor="@color/gray800"
+            android:textSize="@dimen/font_h5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/din_medium"
+            android:gravity="center"
+            android:text="Explore bikes located near you."
+            android:textColor="@color/gray500"
+            android:textSize="@dimen/font_regular_1"
+            app:lineHeight="24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
