@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "669988551730",
+    "firebase_url": "https://carrental-a95f1.firebaseio.com",
+    "project_id": "carrental-a95f1",
+    "storage_bucket": "carrental-a95f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669988551730:android:769205f26fefb5fbb9902b",
+        "android_client_info": {
+          "package_name": "com.shriom.bikerental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669988551730-fkode1ti2vej1bkrnk8i61dmu3fg6ima.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shriom.bikerental",
+            "certificate_hash": "8ed3198357da3a59f8539ed893f69dbbe3ebd519"
+          }
+        },
+        {
+          "client_id": "669988551730-tjliv5a0fkmeu4gr6p9g6rth7kfamt7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsuNEVzHHpYRVx8MZR_zDX-A2HhIq4vvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669988551730-tjliv5a0fkmeu4gr6p9g6rth7kfamt7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
 
@@ -20,6 +21,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField 'String', 'BASE_URL', '"https://carrental-a95f1.firebaseio.com"'
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -55,6 +60,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
     kapt 'com.android.databinding:compiler:3.1.4'
 
     // Google Material

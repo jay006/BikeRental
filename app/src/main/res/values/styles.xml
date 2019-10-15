@@ -48,5 +48,48 @@
         <item name="android:fontFamily">@font/din_medium</item>
     </style>
 
+    <style name="parentLayout">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:animateLayoutChanges">true</item>
+    </style>
+
+    <style name="cleanRecyclerView">
+        <item name="android:overScrollMode">never</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <style name="cleanNestedScrollView">
+        <item name="android:overScrollMode">never</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:animateLayoutChanges">true</item>
+    </style>
+
+    <style name="cleanNestedScrollViewHolder">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:animateLayoutChanges">true</item>
+    </style>
+
+    <style name="clickableView">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="foregroundClickableView">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="imageButton">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:tint">@color/gray600</item>
+    </style>
 
 </resources>

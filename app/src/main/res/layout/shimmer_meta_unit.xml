@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/border_radius_big"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="true">
+
+        <ImageView
+            style="@style/foregroundClickableView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/bike_rent_logo" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_width="85dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shimmer_background" />
+
+    <View
+        style="@style/textBottomLabel"
+        android:layout_width="60dp"
+        android:layout_height="14dp"
+        android:background="@drawable/shimmer_background" />
+
+</LinearLayout>

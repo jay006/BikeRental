@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bike"
+            type="com.shriom.bikerental.net.models.Bike"/>
+
+        <variable
+            name="onImageClick"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:onClick='@{onImageClick}'
+        style="@style/clickableView">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/border_radius_big"
+            app:cardElevation="2dp"
+            app:cardPreventCornerOverlap="true">
+
+            <ImageView
+                style="@style/foregroundClickableView"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:adjustViewBounds="true"
+                android:onClick='@{onImageClick}'
+                android:scaleType="centerCrop"
+                app:imageWithCache='@{bike.image}'
+                tools:srcCompat="@drawable/bike_rent_logo"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/textNormalSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/din_medium"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text='@{bike.bikeName}'
+            tools:text="Beach Camping"/>
+
+        <TextView
+            style="@style/textBottomLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bike.category}"
+            tools:text="Himachal Pradesh"/>
+
+    </LinearLayout>
+
+</layout>

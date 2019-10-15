@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="onSearchClick"
+                type="android.view.View.OnClickListener"/>
+
+        <variable
+                name="viewModel"
+                type="com.shriom.bikerental.ui.home.HomeViewModel"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+                style="@style/cleanNestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                    style="@style/cleanNestedScrollViewHolder"
+                    android:clipToPadding="false"
+                    android:paddingBottom="24dp">
+
+                <ImageView
+                        android:id="@+id/prime"
+                        android:layout_width="match_parent"
+                        android:layout_height="240dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        app:imageWithCache='@{"https://s3.amazonaws.com/mounty.com/main_image.webp"}'
+                        tools:srcCompat="@drawable/sunset_bike_placeholder"/>
+
+
+                <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="-32dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="8dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/border_radius_big"
+                        app:cardElevation="2dp"
+                        app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                            style="@style/clickableView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:onClick='@{onSearchClick}'>
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="12dp"
+                                android:tint="@color/gray700"
+                                app:srcCompat="@drawable/ic_outline_search_24px"/>
+
+
+                        <TextView
+                                android:id="@+id/query"
+                                style="@style/textNormalSmall"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:text="Search Bikes, Scooters and More..."
+                                android:textColor="@color/gray500"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <include
+                        layout="@layout/shimmer_meta_list"
+                        app:isVisible='@{viewModel.mDiscover.size == 0}'/>
+
+
+                <include
+                        layout="@layout/shimmer_meta_list"
+                        app:isVisible='@{viewModel.mDiscover.size == 0}'/>
+
+
+                <include
+                        layout="@layout/shimmer_meta_list"
+                        app:isVisible='@{viewModel.mDiscover.size == 0}'/>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/discoverRecyclerView"
+                        style="@style/cleanRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:paddingTop="16dp"
+                        android:overScrollMode="never"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
