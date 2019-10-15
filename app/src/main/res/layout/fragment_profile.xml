@@ -1,19 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="onEditProfileClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onWalletClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onPrivacyPolicyClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onTermsAndConditionsClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onContactUsClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onLogoutClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewModel"
+            type="com.shriom.bikerental.ui.home.HomeViewModel" />
+    </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/parentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="This is profile fragment"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            style="@style/cleanNestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout style="@style/cleanNestedScrollViewHolder">
+
+                <LinearLayout
+                    android:id="@+id/header"
+                    style="@style/header"
+                    android:layout_width="match_parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        style="@style/headerButton"
+                        android:contentDescription="icon button" />
+
+                    <TextView
+                        style="@style/headerTitle"
+                        android:text="Profile" />
+
+                    <ImageView
+                        style="@style/headerButton"
+                        android:contentDescription="icon button" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="24dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/clickableView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="60dp"
+                        app:cardElevation="0dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:strokeColor="@color/gray300"
+                        app:strokeWidth="0.5dp">
+
+                        <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:adjustViewBounds="true"
+                            android:background="@color/gray100"
+                            android:scaleType="centerCrop"
+                            image='@{viewModel.mUser.userImage}'
+                            tools:srcCompat="@drawable/bike_rent_logo" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        style="@style/textTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text='@{"Hi " + viewModel.mUser.userName}'
+                        tools:text="Hi Shriom" />
+
+                    <TextView
+                        style="@style/textNormalSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text='@{viewModel.mUser.userEmail}'
+                        tools:text="shriom@mounty.co" />
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/imageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit Profile"
+                        android:textSize="@dimen/font_small"
+                        android:layout_marginTop="@dimen/standard_row_space"
+                        android:textColor="@color/gray800"
+                        android:onClick='@{onEditProfileClick}'
+                        app:backgroundTint="@color/gray300"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/lightDivider"
+                    android:layout_width="match_parent" />
+
+                <LinearLayout
+                    style="@style/clickableView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick='@{onPrivacyPolicyClick}'
+                    android:orientation="horizontal"
+                    android:paddingStart="24dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:tint="@color/gray500"
+                        app:srcCompat="@drawable/ic_outline_security_24px" />
+
+                    <TextView
+                        style="@style/textNormalSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Privacy Policy" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/lightDivider"
+                    android:layout_width="match_parent" />
+
+                <LinearLayout
+                    style="@style/clickableView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick='@{onTermsAndConditionsClick}'
+                    android:orientation="horizontal"
+                    android:paddingStart="24dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:tint="@color/gray500"
+                        app:srcCompat="@drawable/ic_outline_assignment_24px" />
+
+                    <TextView
+                        style="@style/textNormalSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Terms and Conditions" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/lightDivider"
+                    android:layout_width="match_parent" />
+
+                <LinearLayout
+                    style="@style/clickableView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick='@{onContactUsClick}'
+                    android:orientation="horizontal"
+                    android:paddingStart="24dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:tint="@color/gray500"
+                        app:srcCompat="@drawable/ic_outline_call_24px" />
+
+                    <TextView
+                        style="@style/textNormalSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Contact Mounty" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/lightDivider"
+                    android:layout_width="match_parent" />
+
+                <LinearLayout
+                    style="@style/clickableView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:onClick='@{onLogoutClick}'
+                    android:orientation="horizontal"
+                    android:paddingStart="24dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:tint="@color/gray500"
+                        app:srcCompat="@drawable/ic_outline_power_settings_new_24px" />
+
+                    <TextView
+                        style="@style/textNormalSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Logout" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

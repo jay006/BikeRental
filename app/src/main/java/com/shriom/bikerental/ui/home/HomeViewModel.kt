@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shriom.bikerental.net.Repository
 import com.shriom.bikerental.net.models.Home
+import com.shriom.bikerental.net.models.User
+import com.shriom.bikerental.utils.SharedPref
 
 
 class HomeViewModel() : ViewModel() {
@@ -18,6 +20,7 @@ class HomeViewModel() : ViewModel() {
             return field
         }
 
+    var mUser = MutableLiveData<User>(SharedPref.getInstance().getUser())
 
 
 }

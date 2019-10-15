@@ -12,6 +12,13 @@ import com.shriom.bikerental.ui.home.fragments.BookingsFragment
 import com.shriom.bikerental.ui.home.fragments.DiscoverFragment
 import com.shriom.bikerental.ui.home.fragments.ProfileFragment
 import kotlinx.android.synthetic.main.activity_home.*
+import android.widget.Toast
+import com.firebase.ui.auth.AuthUI
+import android.content.Intent
+import android.widget.ShareActionProvider
+import com.shriom.bikerental.ui.MasterActivity
+import com.shriom.bikerental.utils.SharedPref
+
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -58,6 +65,14 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
         }
         return false
+    }
+
+    fun logOut() {
+        AuthUI.getInstance().signOut(this).addOnCompleteListener {
+            Toast.makeText(this, "Logout successful", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MasterActivity::class.java))
+            finish()
+        }
     }
 
 }

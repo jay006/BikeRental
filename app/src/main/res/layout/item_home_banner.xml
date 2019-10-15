@@ -16,12 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/standard_row_space"
+            android:layout_marginTop="16dp"
             android:paddingBottom="10dp">
 
         <TextView
                 android:id="@+id/bannerTitle"
-                style="@style/textNormal"
+                style="@style/textTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 text="@{home.title}"
@@ -31,7 +31,7 @@
 
         <TextView
                 android:id="@+id/bannerDescription"
-                style="@style/textBottomLabel"
+                style="@style/textNormalSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

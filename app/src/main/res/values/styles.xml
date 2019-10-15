@@ -92,4 +92,41 @@
         <item name="android:tint">@color/gray600</item>
     </style>
 
+    <style name="header">
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:animateLayoutChanges">true</item>
+    </style>
+
+    <style name="headerButton" parent="imageButton">
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+
+    <style name="headerTitle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/gray700</item>
+        <item name="android:textSize">@dimen/font_regular_2</item>
+        <item name="android:fontFamily">@font/din_regular</item>
+    </style>
+
+    <style name="lightDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/gray300</item>
+    </style>
+
+
 </resources>

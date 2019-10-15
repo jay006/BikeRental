@@ -42,8 +42,7 @@
                         android:layout_height="240dp"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        app:imageWithCache='@{"https://s3.amazonaws.com/mounty.com/main_image.webp"}'
-                        tools:srcCompat="@drawable/sunset_bike_placeholder"/>
+                        app:srcCompat="@drawable/sunset_bike_placeholder"/>
 
 
                 <com.google.android.material.card.MaterialCardView
