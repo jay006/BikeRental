@@ -18,6 +18,7 @@ import com.shriom.bikerental.databinding.FragmentDiscoverBinding
 import com.shriom.bikerental.net.models.Home
 import com.shriom.bikerental.ui.home.HomeViewModel
 import com.shriom.bikerental.ui.home.viewholders.DiscoverItemViewHolder
+import com.shriom.bikerental.ui.search.SearchActivity
 
 class DiscoverFragment : Fragment() {
 
@@ -86,8 +87,7 @@ class DiscoverFragment : Fragment() {
     }
 
     private val onSearchClick = View.OnClickListener {
-//        TODO create search activity
-//        startActivity(Intent(activity, SearchActivity::class.java))
+        startActivity(Intent(activity, SearchActivity::class.java))
     }
 
     private fun showToast(msg: String) {

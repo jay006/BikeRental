@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.shriom.bikerental.ui.search.SearchViewModel" />
+
+          <variable  name="onSearchClearClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onBackClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <LinearLayout
+            android:id="@+id/header"
+            style="@style/header"
+            android:layout_width="match_parent"
+            android:elevation="1.8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                style="@style/headerButton"
+                android:contentDescription="back button"
+                android:onClick='@{onBackClick}'
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_arrow_back_24dp" />
+
+            <LinearLayout
+                style="@style/clickableView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:focusableInTouchMode="true">
+
+
+                <EditText
+                    android:id="@+id/query"
+                    style="@style/textNormalSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:autofillHints=""
+                    android:background="@drawable/search_background"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    app:passwordToggleDrawable="@null"
+                    android:hint="Search Baja, Royal and Scooter..."
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:enabled='@{viewModel.mBikes != null}'
+                    android:text='@={viewModel.mQuery}' />
+
+                <ImageView
+                    android:id="@+id/clear"
+                    goneUnless='@{viewModel.mQuery.length > 0}'
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:contentDescription="clear button"
+                    android:focusable="true"
+                    android:onClick='@{onSearchClearClick}'
+                    android:paddingStart="18dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="18dp"
+                    android:paddingRight="10dp"
+                    android:tint="@color/gray400"
+                    app:actionViewClass="androidx.appcompat.widget.SearchView"
+                    app:showAsAction="ifRoom|collapseActionView"
+                    app:srcCompat="@drawable/ic_outline_highlight_off_24px" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:animateLayoutChanges="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/ic_undraw_not_found_60pq" />
+
+            <TextView
+                style="@style/textBottomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="No Matches Found" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bikesRecyclerView"
+            style="@style/cleanRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

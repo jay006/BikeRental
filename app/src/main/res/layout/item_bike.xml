@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bike"
+            type="com.shriom.bikerental.net.models.Bike" />
+
+        <variable
+            name="onBikeClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/clickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick='@{onBikeClick}'
+            android:padding="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/border_radius_big"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="87dp"
+                    android:background="@color/gray200"
+                    android:scaleType="centerCrop"
+                    app:image='@{bike.image}'
+                    app:srcCompat="@drawable/placeholder_image" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_bike_name"
+                style="@style/textNormalSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/din_medium"
+                android:singleLine="true"
+                android:minHeight="18dp"
+                android:minWidth="100dp"
+                android:background='@{ bike.bikeName.equals("") ? @drawable/shimmer_background : null}'
+                android:text='@{ bike.bikeName.equals("") ? "" : bike.bikeName}'
+                app:layout_constraintStart_toEndOf="@id/mcv_image"
+                app:layout_constraintTop_toTopOf="@id/mcv_image"
+                tools:text="Camp Name" />
+
+            <TextView
+                android:id="@+id/tv_bike_weight"
+                style="@style/textBottomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="18dp"
+                android:minWidth="45dp"
+                android:background='@{ bike.bikeName.equals("") ? @drawable/shimmer_background : null}'
+                android:text='@{ bike.bikeName.equals("") ? "" : ( "" + bike.bikeWeight + "kg")}'
+                app:layout_constraintStart_toStartOf="@id/tv_bike_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_bike_name"
+                tools:text="230kg" />
+
+            <TextView
+                android:id="@+id/tv_bike_kmpl"
+                style="@style/textBottomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:minHeight="18dp"
+                android:minWidth="45dp"
+                android:background='@{ bike.bikeName.equals("") ? @drawable/shimmer_background : null}'
+                android:text='@{ bike.bikeName.equals("") ? "" : ( "" + bike.bikeKmpl) + "kmpl"}'
+                app:layout_constraintStart_toEndOf="@id/tv_bike_weight"
+                app:layout_constraintTop_toBottomOf="@id/tv_bike_name"
+                tools:text="120 kmpl" />
+
+            <TextView
+                android:id="@+id/tv_bike_cc"
+                style="@style/textBottomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:minHeight="18dp"
+                android:minWidth="45dp"
+                android:background='@{ bike.bikeName.equals("") ? @drawable/shimmer_background : null}'
+                android:text='@{ bike.bikeName.equals("") ? "" : ( "" + bike.bikeCC) + "CC"}'
+                app:layout_constraintStart_toEndOf="@id/tv_bike_kmpl"
+                app:layout_constraintTop_toBottomOf="@id/tv_bike_name"
+                tools:text="360 CC" />
+
+            <TextView
+                android:id="@+id/tv_bike_price_perday"
+                style="@style/textNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:minHeight="18dp"
+                android:minWidth="35dp"
+                android:text='@{bike.bikeName.equals("") ? "" : (@string/rupees + "" + bike.price)}'
+                android:background='@{ bike.bikeName.equals("") ? @drawable/shimmer_background : null}'
+                app:layout_constraintStart_toStartOf="@id/tv_bike_weight"
+                app:layout_constraintTop_toBottomOf="@id/tv_bike_weight"
+                tools:text="\u20B95000" />
+
+            <TextView
+                style="@style/textBottomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{bike.bikeName.equals("") ? "" : " per day"}'
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bike_price_perday"
+                app:layout_constraintStart_toEndOf="@+id/tv_bike_price_perday" />
+
+            <TextView
+                android:id="@+id/tv_bike_rating"
+                style="@style/textTopLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text='@{bike.bikeName.equals("") ? "" :( "" + bike.bikeRating)}'
+                app:layout_constraintBottom_toTopOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                goneUnless='@{!bike.bikeName.equals("")}'
+                tools:text='2.3' />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:tint="@color/gray400"
+                goneUnless='@{!bike.bikeName.equals("")}'
+                app:layout_constraintEnd_toStartOf="@id/tv_bike_rating"
+                app:layout_constraintTop_toTopOf="@id/tv_bike_name"
+                app:srcCompat="@drawable/ic_star_black_24dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</layout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BikeRental</string>
+
+    <string name="rupees">\u20B9</string>
+
+
 </resources>

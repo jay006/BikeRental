@@ -1,7 +1,9 @@
 package com.shriom.bikerental.adapters
 
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.shriom.bikerental.utils.RecyclerDiffUtil
 
 
 abstract class GenericRecyclerViewAdapter<T> :
@@ -34,6 +36,17 @@ abstract class GenericRecyclerViewAdapter<T> :
     override fun setData(data: List<T>) {
         items = data as MutableList<T>
         notifyDataSetChanged()
+    }
+
+    fun updateData(newList: MutableList<T>,  diffUtilCallBack: RecyclerDiffUtil<T>) {
+
+        val diffResult = DiffUtil.calculateDiff(diffUtilCallBack)
+
+        items.clear()
+        items.addAll(newList)
+
+        diffResult.dispatchUpdatesTo(this)
+
     }
 
 }
