@@ -22,13 +22,13 @@
             app:goneUnless='@{isVisible}'>
 
             <ImageView
+                android:id="@+id/mater_imgae"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="false"
                 android:paddingStart="13dp"
-                android:tint="@color/orangeA700"
-                app:srcCompat="@drawable/ic_bike"/>
+                android:tint="@color/orangeA700"/>
 
             <TextView
                 style="@style/textLabel"

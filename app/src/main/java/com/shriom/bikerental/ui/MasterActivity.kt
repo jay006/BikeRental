@@ -3,10 +3,15 @@ package com.shriom.bikerental.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
+import com.shriom.bikerental.R
+import com.shriom.bikerental.databinding.ActivityMasterBinding
 import com.shriom.bikerental.net.models.User
 import com.shriom.bikerental.ui.home.HomeActivity
 import com.shriom.bikerental.ui.onboard.OnBoardActivity
@@ -16,8 +21,6 @@ class MasterActivity : AppCompatActivity() {
 
     companion object {
         const val SHARED_PREF_NAME = "myBikeSharedPref"
-        const val SHARED_PREF_IS_AUTHENTICATED = "isUserAuthenticated"
-        const val SHARED_PREF_USER = "user"
     }
 
     private lateinit var mBikerViewModel: BikerViewModel
@@ -26,7 +29,7 @@ class MasterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         mBikerViewModel = ViewModelProviders.of(this).get(BikerViewModel::class.java)
-        init()
+        Handler().postDelayed({ init() }, 800 )
 
     }
 
@@ -34,11 +37,10 @@ class MasterActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
 
         if (FirebaseAuth.getInstance().currentUser != null) {
-            //TODO go to home activity if user object details are filed else go to user profile edit screen
             //for now lets go to user home screen
+
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
-
         } else {
             startActivity(Intent(this, OnBoardActivity::class.java))
             finish()

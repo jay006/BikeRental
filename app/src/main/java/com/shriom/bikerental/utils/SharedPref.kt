@@ -30,7 +30,7 @@ class SharedPref(context: Context) {
 
     }
 
-    fun saveUser(firebaseUser: FirebaseUser) {
+    fun saveUser(firebaseUser: FirebaseUser): Boolean {
 
         val editor = sharedPreference.edit()
 
@@ -44,7 +44,7 @@ class SharedPref(context: Context) {
         val json = gson.toJson(user)
         editor.putString(USER, json)
 
-        editor.apply()
+        return editor.commit()
 
     }
 
