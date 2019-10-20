@@ -11,7 +11,7 @@ class SharedPref(context: Context) {
 
     private var sharedPreference: SharedPreferences = context.getSharedPreferences("bikerent", Context.MODE_PRIVATE)
 
-    private val USER = "USER"
+    private val USER = "BIKE"
     private val USER_AUTHENTICATED = "user_authenticated"
 
     companion object {

@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.shriom.bikerental.net.models.Bike
+import com.shriom.bikerental.net.models.Booking
 import com.shriom.bikerental.net.models.Home
 import com.shriom.bikerental.net.models.User
+import org.joda.time.DateTime
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -80,4 +82,35 @@ class Repository {
         return mData
     }
 
+
+    fun createBooking(user: User?, bike: Bike, pickUpDate: Long, dropDate: Long): LiveData<Booking> {
+
+        val mData = MutableLiveData(Booking())
+
+        val bookingJson = JsonObject()
+        bookingJson.addProperty("userId", user?.userId)
+        bookingJson.addProperty("userName", user?.userName)
+        bookingJson.addProperty("userEmail", user?.userEmail)
+        bookingJson.addProperty("bikeId", bike.bikeId)
+        bookingJson.addProperty("bikeName", bike.bikeName)
+        bookingJson.addProperty("bookingId", user?.userEmail.hashCode())
+        bookingJson.addProperty("pickUpDate", pickUpDate)
+        bookingJson.addProperty("dropDate", dropDate)
+
+        val bookingPath = """${DateTime.now().millis}.json"""
+
+        RetrofitClient.mBikeService.createBooking(bookingJson, bookingPath).enqueue(object : Callback<Booking> {
+            override fun onFailure(call: Call<Booking>, t: Throwable) {
+                Log.d("error", t.message)
+            }
+
+            override fun onResponse(call: Call<Booking>, response: Response<Booking>) {
+                if( response.isSuccessful && response.body() != null){
+                    mData.value = response.body()
+                }
+            }
+        })
+
+        return mData
+    }
 }

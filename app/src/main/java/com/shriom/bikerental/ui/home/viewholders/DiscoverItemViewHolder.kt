@@ -22,7 +22,7 @@ abstract class DiscoverItemViewHolder (
 )
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    abstract fun onBannerItemClick(id: String?, category: String )
+    abstract fun onBannerItemClick(bike: Bike)
 
     fun bind(mHome: Home) {
 
@@ -36,8 +36,8 @@ abstract class DiscoverItemViewHolder (
 
             override fun setViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
                 return object : DiscoverBikeItemViewHolder(parent){
-                    override fun onImageClick(id: String, code: String) {
-                        onBannerItemClick(id, code)
+                    override fun onImageClick(bike: Bike) {
+                        onBannerItemClick(bike)
                     }
 
                 }

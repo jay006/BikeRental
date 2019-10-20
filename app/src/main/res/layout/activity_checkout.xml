@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.shriom.bikerental.ui.checkout.CheckOutViewModel" />
+        
+        <variable
+            name="onPayClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onCheckInDateClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onCheckOutDateClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/standard_row_space">
+
+
+            <ImageView
+                android:id="@+id/bikeImageView"
+                android:layout_width="match_parent"
+                android:layout_height="274dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:image='@{viewModel.mBike.image}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_bike_name"
+                style="@style/textTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/standard_row_space"
+                android:layout_marginTop="@dimen/standard_row_space"
+                android:layout_marginEnd="8dp"
+                android:text='@{viewModel.mBike.bikeName}'
+                android:textSize="@dimen/font_h5"
+                app:layout_constraintEnd_toStartOf="@+id/img_star"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bikeImageView"
+                tools:text="Royal Enfield" />
+
+
+            <TextView
+                android:id="@+id/tv_bike_weight"
+                style="@style/textNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_row_space"
+                android:minWidth="45dp"
+                android:minHeight="18dp"
+                android:text='@{ "" + viewModel.mBike.bikeWeight + "kg"}'
+                app:layout_constraintEnd_toStartOf="@+id/tv_bike_kmpl"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_bike_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bike_name"
+                tools:text="230kg" />
+
+            <TextView
+                android:id="@+id/tv_bike_kmpl"
+                style="@style/textNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text='@{ "" + viewModel.mBike.bikeKmpl + "kmpl"}'
+                app:layout_constraintBottom_toTopOf="@+id/tv_bike_weight"
+                app:layout_constraintEnd_toStartOf="@+id/tv_bike_cc"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_bike_weight"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bike_weight"
+                tools:text="120 kmpl" />
+
+            <TextView
+                android:id="@+id/tv_bike_cc"
+                style="@style/textNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text='@{ "" + viewModel.mBike.bikeCC + "CC"}'
+                app:layout_constraintBottom_toTopOf="@+id/tv_bike_kmpl"
+                app:layout_constraintEnd_toEndOf="@+id/tv_bike_name"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_bike_kmpl"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bike_kmpl"
+                tools:text="360 CC" />
+
+
+            <ImageView
+                android:id="@+id/img_star"
+                goneUnless='@{!viewModel.mBike.bikeName.equals("")}'
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:tint="@color/gray400"
+                app:layout_constraintBottom_toTopOf="@+id/tv_bike_name"
+                app:layout_constraintEnd_toStartOf="@id/tv_bike_rating"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bike_name"
+                app:srcCompat="@drawable/ic_star_black_24dp" />
+
+            <TextView
+                android:id="@+id/tv_bike_rating"
+                style="@style/textTopLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/standard_row_space"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text='@{"" + viewModel.mBike.bikeRating}'
+                app:layout_constraintBottom_toTopOf="@+id/img_star"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_star"
+                tools:text='2.3' />
+
+            <View
+                android:id="@+id/v_divider"
+                style="@style/lightDivider"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/standard_row_space"
+                app:layout_constraintTop_toBottomOf="@id/tv_bike_weight" />
+
+
+            <TextView
+                android:id="@+id/tv_pickup_time"
+                style="@style/textTopLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_row_space"
+                android:text="Pickup Time"
+                app:layout_constraintStart_toStartOf="@id/tv_bike_name"
+                app:layout_constraintTop_toBottomOf="@id/v_divider" />
+
+            <TextView
+                android:id="@+id/tv_pickup"
+                style="@style/textNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:00 AM"
+                app:layout_constraintStart_toStartOf="@+id/tv_pickup_time"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pickup_time" />
+
+
+            <TextView
+                android:id="@+id/tv_pickup_date"
+                style="@style/textTopLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_row_space"
+                android:text="Pickup Date"
+                app:layout_constraintStart_toStartOf="@id/tv_bike_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_pickup" />
+
+            <!--Check-in checkout date selection-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ll_dates"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/toggle_stroke"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/tv_bike_rating"
+                app:layout_constraintStart_toStartOf="@id/tv_bike_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_pickup_date">
+
+                <ImageView
+                    android:id="@+id/ic_calendar"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="16dp"
+                    android:tint="@color/amberA700"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_calendar" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.575" />
+
+                <LinearLayout
+                    style="@style/clickableView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick='@{onCheckInDateClick}'
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/guideline"
+                    app:layout_constraintStart_toEndOf="@id/ic_calendar"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/textNormalSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/din_medium"
+                        android:text='@{viewModel.DATE_FORMAT.print(viewModel.mCheckInDate)}'
+                        tools:text="25 Feb, 2019" />
+
+                    <TextView
+                        style="@style/textBottomLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/din_bold"
+                        android:singleLine="true"
+                        android:text="CHANGE PICKUP DATE"
+                        android:textColor="@color/blueA400"
+                        android:textSize="@dimen/font_mini" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/clickableView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick='@{onCheckOutDateClick}'
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/guideline"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        style="@style/textNormalSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/din_medium"
+                        android:text='@{viewModel.DATE_FORMAT.print(viewModel.mCheckOutDate)}'
+                        tools:text="27 Feb, 2019" />
+
+                    <TextView
+                        style="@style/textBottomLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/din_bold"
+                        android:singleLine="true"
+                        android:text="CHANGE DROP DATE"
+                        android:textColor="@color/blueA400"
+                        android:textSize="@dimen/font_mini" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_bike_price_perday"
+                style="@style/textTopLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/standard_row_space"
+                android:text="Price Per Day"
+                app:layout_constraintStart_toStartOf="@+id/tv_pickup_time"
+                app:layout_constraintTop_toBottomOf="@+id/ll_dates" />
+
+
+            <TextView
+                android:id="@+id/tv_bike_price"
+                style="@style/textNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text='@{@string/rupees + "" + viewModel.mBike.price}'
+                app:layout_constraintStart_toStartOf="@id/tv_bike_price_perday"
+                app:layout_constraintTop_toBottomOf="@id/tv_bike_price_perday"
+                tools:text="Rs.4000" />
+
+            <TextView
+                android:id="@+id/tv_contact_detail"
+                style="@style/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Details"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="@+id/tv_bike_price"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bike_price" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:layout_marginTop="12dp"
+                app:passwordToggleDrawable="@null"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintStart_toStartOf="@id/ll_dates"
+                app:layout_constraintEnd_toEndOf="@id/ll_dates"
+                app:layout_constraintTop_toBottomOf="@id/tv_contact_detail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled='@{viewModel.mUser != null}'
+                    android:inputType="textPersonName"
+                    app:passwordToggleDrawable="@null"
+                    android:maxLength="56"
+                    android:text='@={viewModel.mUser.userName}'/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Email"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:layout_constraintEnd_toEndOf="@id/name"
+                app:layout_constraintStart_toStartOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                app:passwordToggleDrawable="@null">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled='@{viewModel.mUser != null}'
+                    android:inputType="textPersonName"
+                    android:maxLength="56"
+                    android:text='@={viewModel.mUser.userEmail}'
+                    app:passwordToggleDrawable="@null" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/toggle_stroke"
+                android:layout_marginTop="40dp"
+                android:padding="@dimen/standard_padding"
+                app:layout_constraintStart_toStartOf="@id/ll_dates"
+                app:layout_constraintEnd_toEndOf="@id/ll_dates"
+                app:layout_constraintTop_toBottomOf="@id/email">
+
+                <TextView
+                    android:id="@+id/tv_subtotal_title"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subtotal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="@dimen/standard_row_space"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tv_subtotal"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{@string/rupees +" "+ +viewModel.mTotal}'
+                    tools:text="Rs. 8,2500"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@id/tv_subtotal_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_subtotal_title"
+                    app:layout_constraintBottom_toTopOf="@id/tv_subtotal_title"/>
+
+
+
+                <TextView
+                    android:id="@+id/tv_discount_title"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Discount"
+                    android:layout_marginTop="@dimen/standard_padding"
+                    app:layout_constraintStart_toStartOf="@id/tv_subtotal_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_subtotal_title"/>
+
+                <TextView
+                    android:id="@+id/tv_discount"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{ "- "+@string/rupees +" "+ 0}'
+                    tools:text="- Rs. 500"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintEnd_toEndOf="@id/tv_subtotal"
+                    app:layout_constraintStart_toEndOf="@id/tv_discount_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_discount_title"
+                    app:layout_constraintBottom_toTopOf="@id/tv_discount_title"/>
+
+
+
+                <TextView
+                    android:id="@+id/tv_net_amount_title"
+                    style="@style/textTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NetAmount"
+                    android:layout_marginTop="@dimen/standard_padding"
+                    app:layout_constraintStart_toStartOf="@id/tv_discount_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_discount_title"/>
+
+                <TextView
+                    android:id="@+id/tv_net_amount"
+                    style="@style/textTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{@string/rupees +" "+ viewModel.mTotal}'
+                    tools:text="Rs. 2000"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintEnd_toEndOf="@id/tv_discount"
+                    app:layout_constraintStart_toEndOf="@id/tv_net_amount_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_net_amount_title"
+                    app:layout_constraintBottom_toTopOf="@id/tv_net_amount_title"/>
+
+
+
+                <TextView
+                    android:id="@+id/tv_advance_title"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Advance"
+                    android:layout_marginTop="60dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_net_amount_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_net_amount_title"/>
+
+                <TextView
+                    android:id="@+id/tv_advance_message"
+                    style="@style/textBottomLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20% to be paid now"
+                    app:layout_constraintStart_toStartOf="@id/tv_advance_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_advance_title"/>
+
+
+                <TextView
+                    android:id="@+id/tv_advance"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{@string/rupees +" "+ +((float)viewModel.mTotal * 0.2f)}'
+                    tools:text="Rs. 200"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintEnd_toEndOf="@id/tv_net_amount"
+                    app:layout_constraintStart_toEndOf="@id/tv_advance_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_advance_title"
+                    app:layout_constraintBottom_toTopOf="@id/tv_advance_title"/>
+
+
+                <TextView
+                    android:id="@+id/tv_due_amount_title"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Due Amount"
+                    android:layout_marginTop="@dimen/standard_padding"
+                    app:layout_constraintStart_toStartOf="@id/tv_advance_message"
+                    app:layout_constraintTop_toBottomOf="@id/tv_advance_message"/>
+
+                <TextView
+                    android:id="@+id/tv_due_amount_message"
+                    style="@style/textBottomLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pay @Site"
+                    app:layout_constraintStart_toStartOf="@id/tv_due_amount_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_due_amount_title"/>
+
+
+                <TextView
+                    android:id="@+id/tv_due_amount"
+                    style="@style/textNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{ @string/rupees +" "+  + ((float)viewModel.mTotal - ((float)viewModel.mTotal * 0.2f))}'
+                    tools:text="Rs. 6000"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintEnd_toEndOf="@id/tv_advance"
+                    app:layout_constraintStart_toEndOf="@id/tv_due_amount_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_due_amount_title"
+                    app:layout_constraintBottom_toTopOf="@id/tv_due_amount_title"/>
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_pay_now"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    style="@style/imageButton"
+                    android:layout_marginTop="@dimen/standard_padding"
+                    android:onClick='@{onPayClick}'
+                    android:text="PAY NOW"
+                    app:backgroundTint="@color/orange700"
+                    app:layout_constraintTop_toBottomOf="@id/tv_due_amount_message"
+                    app:layout_constraintStart_toStartOf="@id/tv_due_amount_title"
+                    app:layout_constraintEnd_toEndOf="@id/tv_due_amount"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

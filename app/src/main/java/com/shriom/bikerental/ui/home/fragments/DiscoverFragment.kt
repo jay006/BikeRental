@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shriom.bikerental.R
 import com.shriom.bikerental.adapters.GenericRecyclerViewAdapter
 import com.shriom.bikerental.databinding.FragmentDiscoverBinding
+import com.shriom.bikerental.net.models.Bike
 import com.shriom.bikerental.net.models.Home
+import com.shriom.bikerental.ui.checkout.CheckOutActivity
 import com.shriom.bikerental.ui.home.HomeViewModel
 import com.shriom.bikerental.ui.home.viewholders.DiscoverItemViewHolder
 import com.shriom.bikerental.ui.search.SearchActivity
@@ -58,8 +60,10 @@ class DiscoverFragment : Fragment() {
             override fun setViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
                 return object : DiscoverItemViewHolder(parent) {
-                    override fun onBannerItemClick(id: String?, category: String) {
-                        showToast(id!!)
+                    override fun onBannerItemClick(bike: Bike) {
+                        val intent = Intent(activity, CheckOutActivity::class.java)
+                        intent.putExtra(CheckOutActivity.BIKE,bike)
+                        startActivity(intent)
                     }
                 }
             }

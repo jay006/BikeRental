@@ -18,11 +18,11 @@ abstract class DiscoverBikeItemViewHolder(
     )
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    abstract fun onImageClick(id: String, code: String)
+    abstract fun onImageClick(bike: Bike)
 
     fun bind(bike: Bike) {
         binding.bike = bike
-        binding.setOnImageClick { onImageClick(bike.bikeId!!, bike.category!!) }
+        binding.setOnImageClick { onImageClick(bike) }
     }
 
 }

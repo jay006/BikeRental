@@ -29,6 +29,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        mBinding.lifecycleOwner = this
 
         mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 

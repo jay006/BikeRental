@@ -1,5 +1,6 @@
 package com.shriom.bikerental.ui.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.shriom.bikerental.R
 import com.shriom.bikerental.adapters.GenericRecyclerViewAdapter
 import com.shriom.bikerental.databinding.ActivitySearchBinding
 import com.shriom.bikerental.net.models.Bike
+import com.shriom.bikerental.ui.checkout.CheckOutActivity
 import com.shriom.bikerental.utils.RecyclerDiffUtil
 import com.shriom.bikerental.utils.getEmptyList
 import kotlinx.android.synthetic.main.activity_search.*
@@ -47,7 +49,10 @@ class SearchActivity : AppCompatActivity() {
             override fun setViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
                 return object : BikeViewHolder(parent) {
                     override fun onBikeClick(bike: Bike) {
-                        showToast(bike.bikeName)
+                        val intent = Intent(this@SearchActivity, CheckOutActivity::class.java)
+                        intent.putExtra(CheckOutActivity.BIKE,bike)
+                        startActivity(intent)
+                        finish()
                     }
                 }
             }
