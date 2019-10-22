@@ -117,16 +117,16 @@
                         android:text='@{viewModel.mUser.userEmail}'
                         tools:text="shriom@mounty.co" />
 
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/imageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Edit Profile"
-                        android:textSize="@dimen/font_small"
-                        android:layout_marginTop="@dimen/standard_row_space"
-                        android:textColor="@color/gray800"
-                        android:onClick='@{onEditProfileClick}'
-                        app:backgroundTint="@color/gray300"/>
+<!--                    <com.google.android.material.button.MaterialButton-->
+<!--                        style="@style/imageButton"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Edit Profile"-->
+<!--                        android:textSize="@dimen/font_small"-->
+<!--                        android:layout_marginTop="@dimen/standard_row_space"-->
+<!--                        android:textColor="@color/gray800"-->
+<!--                        android:onClick='@{onEditProfileClick}'-->
+<!--                        app:backgroundTint="@color/gray300"/>-->
 
                 </LinearLayout>
 
@@ -222,7 +222,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
-                        android:text="Contact Mounty" />
+                        android:text="Contact Bike Rental" />
 
                 </LinearLayout>
 

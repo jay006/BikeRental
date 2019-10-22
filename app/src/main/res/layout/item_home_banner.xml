@@ -47,7 +47,6 @@
                 android:layout_marginTop="10dp"
                 android:paddingStart="@dimen/standard_row_space"
                 android:paddingEnd="@dimen/standard_row_space"
-                app:data="@{home.items}"
                 android:overScrollMode="never"
                 android:clipToPadding="false"/>
 

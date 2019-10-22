@@ -22,7 +22,10 @@ interface BikeService {
     @PUT("users/{userpath}")
     fun registerUser(@Body body: JsonObject, @Path("userpath") userPath: String) : Call<User>
 
-    @PUT("bookings/{bookingpath}")
-    fun createBooking(@Body body: JsonObject, @Path("bookingpath") bookingPath: String) : Call<Booking>
+    @PUT("bookings/{userId}/{bookingpath}")
+    fun createBooking(@Body body: JsonObject,@Path("userId") userId: String, @Path("bookingpath") bookingPath: String) : Call<Booking>
+
+    @GET("bookings.json")
+    fun getBookings(): Call<List<Booking>>
 
 }

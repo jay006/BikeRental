@@ -2,6 +2,7 @@ package com.shriom.bikerental.ui.checkout
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.os.Handler
 import android.os.PersistableBundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -48,6 +49,7 @@ class CheckOutActivity : AppCompatActivity() {
         viewModel.createBooking().observe(this, Observer { booking ->
             if( booking != null ){
                 Toast.makeText(this@CheckOutActivity,  "Booking Successful", Toast.LENGTH_SHORT).show()
+                Handler().postDelayed({ this@CheckOutActivity.finish() }, 1000)
                 finish()
             }
         })

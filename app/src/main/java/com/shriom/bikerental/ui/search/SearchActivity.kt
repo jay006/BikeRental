@@ -19,6 +19,7 @@ import com.shriom.bikerental.ui.checkout.CheckOutActivity
 import com.shriom.bikerental.utils.RecyclerDiffUtil
 import com.shriom.bikerental.utils.getEmptyList
 import kotlinx.android.synthetic.main.activity_search.*
+import java.util.*
 
 class SearchActivity : AppCompatActivity() {
 
@@ -105,7 +106,8 @@ class SearchActivity : AppCompatActivity() {
             if (query.isNotEmpty()) {
                 searched = true
                 val querryList = bikesAdapter.items.filter { bike ->
-                    bike.bikeName?.contains(query)!! || bike.category?.contains(query)!!
+                    bike.bikeName?.toLowerCase(Locale.getDefault())?.contains(query.toLowerCase(Locale.getDefault()))!! ||
+                            bike.category?.toLowerCase(Locale.getDefault())?.contains(query.toLowerCase(Locale.getDefault()))!!
                 }
 
                 mBinding.llNoData.visibility = View.GONE

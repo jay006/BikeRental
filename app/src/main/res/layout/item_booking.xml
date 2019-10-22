@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="booking"
+            type="com.shriom.bikerental.net.models.Booking" />
+
+        <variable
+            name="onBikeClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/clickableView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick='@{onBikeClick}'
+            android:padding="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/border_radius_big"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="87dp"
+                    android:background="@color/gray200"
+                    android:scaleType="centerCrop"
+                    app:image='@{booking.bikeImage}'
+                    app:srcCompat="@drawable/placeholder_image" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_bike_name"
+                style="@style/textNormalSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/din_medium"
+                android:singleLine="true"
+                android:minHeight="18dp"
+                android:minWidth="100dp"
+                android:text='@{booking.bikeName}'
+                app:layout_constraintStart_toEndOf="@id/mcv_image"
+                app:layout_constraintTop_toTopOf="@id/mcv_image"
+                tools:text="Camp Name" />
+
+            <TextView
+                android:id="@+id/tv_pickup_date_title"
+                style="@style/textBottomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pickup Date"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/tv_bike_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bike_name" />
+
+            <TextView
+                android:id="@+id/tv_pickup_date"
+                style="@style/textNormalSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{booking.pickUpDate}'
+                app:layout_constraintStart_toStartOf="@+id/tv_pickup_date_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pickup_date_title"
+                tools:text="25, Feb, 2019" />
+
+            <TextView
+                android:id="@+id/tv_drop_date_title"
+                style="@style/textBottomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drop Date"
+                app:layout_constraintBottom_toTopOf="@+id/tv_drop_date"
+                app:layout_constraintStart_toStartOf="@+id/tv_drop_date"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bike_name" />
+
+            <TextView
+                android:id="@+id/tv_drop_date"
+                style="@style/textNormalSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{booking.pickUpDate}'
+                app:layout_constraintEnd_toEndOf="@id/tv_bike_rating"
+                app:layout_constraintBottom_toBottomOf="@id/tv_pickup_date"
+                tools:text="25, Feb, 2019" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text='@{"Total " + @string/rupees + booking.total}'
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="@id/tv_pickup_date"
+                app:layout_constraintTop_toBottomOf="@id/tv_pickup_date"
+                tools:text="Total Rs.2000" />
+
+            <TextView
+                android:id="@+id/tv_bike_rating"
+                style="@style/textTopLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text='@{booking.bikeId}'
+                app:layout_constraintBottom_toTopOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                tools:text='2.3' />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

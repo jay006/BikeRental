@@ -31,7 +31,7 @@ class CheckOutViewModel(var mUser: User, var mBike: Bike) : ViewModel() {
     }
 
     fun createBooking(): LiveData<Booking> {
-        return mBikeRepository.createBooking(mUser, mBike, DATE_FORMAT.parseMillis(DATE_FORMAT.print(mCheckInDate.value)), DATE_FORMAT.parseMillis(DATE_FORMAT.print(mCheckOutDate.value)))
+        return mBikeRepository.createBooking(mUser, mBike, DATE_FORMAT.print(mCheckInDate.value), DATE_FORMAT.print(mCheckOutDate.value), mTotal.value)
     }
 
     class Factory(var mUser: User,var mBike: Bike) : ViewModelProvider.NewInstanceFactory() {

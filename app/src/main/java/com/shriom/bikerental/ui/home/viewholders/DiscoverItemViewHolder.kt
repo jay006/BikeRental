@@ -58,6 +58,7 @@ abstract class DiscoverItemViewHolder (
         binding.bannerRecyclerView.hasFixedSize()
         binding.bannerRecyclerView.adapter = bannerAdapter
 
+        mHome.items?.shuffled()?.let { bannerAdapter.setData(it) }
     }
 
 }

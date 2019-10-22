@@ -8,7 +8,7 @@ class Booking: Serializable {
 
     @SerializedName("bookingId")
     @Expose
-    var bookingId: String = ""
+    var bookingId: Int = 0
 
     @SerializedName("pickUpDate")
     @Expose
@@ -26,6 +26,10 @@ class Booking: Serializable {
     @Expose
     var bikeName: String = ""
 
+    @SerializedName("bikeImage")
+    @Expose
+    var bikeImage: String = ""
+
     @SerializedName("userId")
     @Expose
     var userId: String = ""
@@ -37,5 +41,9 @@ class Booking: Serializable {
     @SerializedName("userEmail")
     @Expose
     var userEmail: String = ""
+
+    @SerializedName("total")
+    @Expose
+    var total: Int = 0
 
 }
