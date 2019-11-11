@@ -6,14 +6,6 @@
     <data>
 
         <variable
-            name="onEditProfileClick"
-            type="android.view.View.OnClickListener" />
-
-        <variable
-            name="onWalletClick"
-            type="android.view.View.OnClickListener" />
-
-        <variable
             name="onPrivacyPolicyClick"
             type="android.view.View.OnClickListener" />
 

@@ -46,13 +46,16 @@ class CheckOutActivity : AppCompatActivity() {
 
     private fun onPayClick() {
         Toast.makeText(this, "Please wait...", Toast.LENGTH_SHORT).show()
-        viewModel.createBooking().observe(this, Observer { booking ->
-            if( booking != null ){
-                Toast.makeText(this@CheckOutActivity,  "Booking Successful", Toast.LENGTH_SHORT).show()
-                Handler().postDelayed({ this@CheckOutActivity.finish() }, 1000)
-                finish()
-            }
-        })
+
+        Handler().postDelayed({
+            viewModel.createBooking().observe(this, Observer { booking ->
+                if( booking != null ){
+                    Toast.makeText(this@CheckOutActivity,  "Booking Successful", Toast.LENGTH_SHORT).show()
+                    Handler().postDelayed({ this@CheckOutActivity.finish() }, 1000)
+                    finish()
+                }
+            })
+        }, 2000)
     }
 
     private fun showCheckInDateDialog() {

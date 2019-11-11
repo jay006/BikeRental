@@ -69,16 +69,14 @@ class WelcomeFragment : Fragment() {
 
     private val onPrivacyPolicyClick: View.OnClickListener = View.OnClickListener {
 
-        //TODO remove privacy policy of the app
-        val uri = Uri.parse("http://mounty.co/privacy-policy")
+        val uri = Uri.parse("https://policies.google.com/privacy?fg=1")
         val intent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(intent)
     }
 
     private val onTermsAndConditionsClick: View.OnClickListener = View.OnClickListener {
 
-        //TODO remove the terms and condititon of the app
-        val uri = Uri.parse("http://mounty.co/terms-and-conditions")
+        val uri = Uri.parse("https://policies.google.com/terms?fg=1")
         val intent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(intent)
     }

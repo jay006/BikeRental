@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import android.content.Intent
+import android.net.Uri
 import android.widget.ShareActionProvider
 import com.shriom.bikerental.ui.MasterActivity
 import com.shriom.bikerental.utils.SharedPref
@@ -74,6 +75,26 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             startActivity(Intent(this, MasterActivity::class.java))
             finish()
         }
+    }
+
+    fun privacyPolicy() {
+        val uri = Uri.parse("https://policies.google.com/privacy?fg=1")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+    }
+
+    fun termsAndCondition() {
+
+        val uri = Uri.parse("https://policies.google.com/terms?fg=1")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+
+    }
+
+    fun contactUs() {
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:+919728600301")
+        startActivity(intent)
     }
 
 }

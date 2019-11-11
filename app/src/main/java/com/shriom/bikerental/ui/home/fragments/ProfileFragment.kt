@@ -33,6 +33,9 @@ class ProfileFragment : Fragment() {
         }
 
         mBinding.viewModel = mHomeViewModel
+        mBinding.setOnPrivacyPolicyClick { (activity as HomeActivity).privacyPolicy() }
+        mBinding.setOnTermsAndConditionsClick { (activity as HomeActivity).termsAndCondition() }
+        mBinding.setOnContactUsClick { (activity as HomeActivity).contactUs() }
         mBinding.setOnLogoutClick { (activity as HomeActivity).logOut() }
 
         return mBinding.root
